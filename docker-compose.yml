@@ -1,0 +1,23 @@
+services:
+  client:
+    image: client
+    build:
+      context: ./frontend/
+      dockerfile: Dockerfile
+    stdin_open: true
+    ports:
+      - "5173:80"
+    networks:
+    - mern-app
+  server:
+    image: server
+    build:
+      context: ./backend/
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    networks:
+      - mern-app
+networks:
+  mern-app:
+    driver: bridge

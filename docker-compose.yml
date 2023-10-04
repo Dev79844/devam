@@ -1,6 +1,6 @@
 services:
-  client:
-    image: client
+  frontend:
+    image: frontend
     build:
       context: ./frontend/
       dockerfile: Dockerfile
@@ -9,8 +9,8 @@ services:
       - "5173:80"
     networks:
     - mern-app
-  server:
-    image: server
+  backend:
+    image: backend
     build:
       context: ./backend/
       dockerfile: Dockerfile

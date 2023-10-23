@@ -33,7 +33,7 @@ exports.addPhone = async(req,res) => {
 
         res.status(200).send("Added Phone")
     } catch (error) {
-        console.error(error);
+        return res.status(500).json(error.message)
     }
 }
 
@@ -42,7 +42,7 @@ exports.getPhones = async(req,res) => {
         const devices = await Phone.find({isSold: false}).sort({createdAt:-1})
         res.status(200).json(devices)
     } catch (error) {
-        console.error(error);
+        return res.status(500).json(error.message)
     }
 }
 
@@ -51,7 +51,7 @@ exports.getSoldPhones = async(req,res) => {
         const devices = await Phone.find({isSold: true}).sort({createdAt:-1})
         res.status(200).json(devices)
     } catch (error) {
-        console.error(error);
+        return res.status(500).json(error.message)
     }
 }
 
@@ -71,7 +71,7 @@ exports.deleteDevice = async(req,res) => {
                     // console.log(data);
                 });
             } catch (error) {
-                console.error(error);
+                return res.status(500).json(error.message)
             }
         }
 
@@ -86,14 +86,14 @@ exports.deleteDevice = async(req,res) => {
                     await s3Client.send(command)
                 })
             } catch (error) {
-                console.error(error);
+                return res.status(500).json(error.message)
             }
         }
         await Phone.findByIdAndDelete(id)
 
         res.status(200).send("Device deleted")
     } catch (error) {
-        console.error(error);
+        return res.status(500).json(error.message)
     }
 }
 
@@ -107,7 +107,7 @@ exports.updateDevice = async(req,res) => {
 
         res.status(200).send("Device updated")
     } catch (error) {
-        console.error(error);
+        return res.status(500).json(error.message)
     }
 }
 
@@ -132,7 +132,7 @@ exports.sellPhone = async(req,res) => {
 
         res.status(200).send("Sale recorded")
     } catch (error) {
-        console.error(error);
+        return res.status(500).json(error.message)
     }
 }
 
@@ -146,7 +146,7 @@ exports.getPhone = async(req,res) => {
 
         res.status(200).json(device)
     } catch (error) {
-        console.error(error);
+        return res.status(500).json(error.message)
     }
 }
 
@@ -172,6 +172,6 @@ exports.dashboard = async(req,res) => {
             "profit": profit
         })
     } catch (error) {
-        console.error(error);
+        return res.status(500).json(error.message)
     }
 }

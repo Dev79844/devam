@@ -19,7 +19,7 @@ exports.signup = async(req,res) => {
 
         res.status(200).json(user)
     } catch (error) {
-        console.error(error)
+        return res.status(500).json(error.message)
     }
 }
 
@@ -37,7 +37,7 @@ exports.login = async(req,res) => {
         cookieToken(user,res)
 
     } catch (error) {
-        console.error(error);
+        return res.status(500).json(error.message)
     }
 }
 
@@ -45,6 +45,6 @@ exports.logout = async(req,res) => {
     try {
         res.cookie('jwt',null).status(200).send("User logout")
     } catch (error) {
-        console.error(error);
+        return res.status(500).json(error.message)
     }
 }

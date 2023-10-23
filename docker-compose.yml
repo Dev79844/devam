@@ -5,6 +5,8 @@ services:
       context: ./frontend/
       dockerfile: Dockerfile
     stdin_open: true
+    depends_on:
+      - backend
     ports:
       - "5173:80"
     networks:

@@ -17,11 +17,13 @@ export default function ProductCard({product}) {
 
   return (
     <Card sx={{ maxWidth: 500 }} onClick={handleClick}>
-      <CardMedia
+      {product.images.length > 0 ? (
+        <CardMedia
         sx={{ height: 140 }}
         image={product?.images[0]?.url}
         title="green iguana"
       />
+      ):(null)}
       <CardContent>
           <Typography gutterBottom variant="h6" component="div" fontWeight={700}>
             {product.model}

@@ -25,7 +25,22 @@ const PhoneForm = () => {
 
     const handleSubmit = async(e) => {
         e.preventDefault()
-        console.log("clicked");
+        if (
+            !condition.trim() ||
+            !model.trim() ||
+            !warranty.trim() ||
+            !accessories.trim() ||
+            !images ||
+            !store.trim() ||
+            !nlc.trim() ||
+            !customerName.trim() ||
+            !customerPhone.trim() ||
+            !customerDocument
+          ) {
+            alert("Please enter all the details");
+            return;
+          }
+          
         setIsLoading(true)
         // console.log(model,warranty,condition,battery,accessories,images);
         let isSold = false

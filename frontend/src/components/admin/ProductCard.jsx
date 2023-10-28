@@ -4,11 +4,13 @@ import { Link } from 'react-router-dom';
 const ProductCard = ({product}) => {
   return (
     <div className="bg-white shadow-lg rounded-lg overflow-hidden">
-      <img
+      {product.images.length > 0 ? (
+        <img
         src={product?.images[0]?.url}
         alt="Product"
         className="w-full h-48 object-cover"
       />
+      ):(null)}
       <div className="p-4">
         <h3 className="text-xl font-bold mb-2">{product.model}</h3>
         <p className="text-gray-700 mb-4 font-semibold">Warranty:{product.warranty}</p>

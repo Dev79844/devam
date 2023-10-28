@@ -19,7 +19,7 @@ export default function ProductCard({product}) {
     <Card sx={{ maxWidth: 500 }} onClick={handleClick}>
       <CardMedia
         sx={{ height: 140 }}
-        image={product.images[0].url}
+        image={product?.images[0]?.url}
         title="green iguana"
       />
       <CardContent>

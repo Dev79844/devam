@@ -5,7 +5,7 @@ const ProductCard = ({product}) => {
   return (
     <div className="bg-white shadow-lg rounded-lg overflow-hidden">
       <img
-        src={product.images[0].url}
+        src={product?.images[0]?.url}
         alt="Product"
         className="w-full h-48 object-cover"
       />
